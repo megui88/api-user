@@ -1,0 +1,21 @@
+{
+  "name": "api-user",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./app/bin/www"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "body-parser": "~1.17.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "dotenv": "^4.0.0",
+    "express": "~4.15.2",
+    "mongodb": "^2.2.28",
+    "morgan": "~1.8.1",
+    "pug": "~2.0.0-beta11",
+    "serve-favicon": "~2.4.2",
+    "uuid": "^3.0.1"
+  }
+}
