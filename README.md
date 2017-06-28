@@ -1,4 +1,5 @@
-API User  [![Build Status](https://travis-ci.org/megui88/api-user.svg?branch=master)](https://travis-ci.org/megui88/api-user)
+API User  [![Build Status](https://travis-ci.org/megui88/api-user.svg?branch=master)](https://travis-ci.org/megui88/api-user) [![Coverage Status](https://coveralls.io/repos/megui88/api-user/badge.svg?branch=master)](https://coveralls.io/r/megui88/api-user?branch=master)
+
 =======
 
 ### Please, it is necessary to have

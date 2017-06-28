@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./app/bin/www",
-    "tests": "NODE_ENV=test mocha './tests/**/*.spec.js'; istanbul cover _mocha $(find ./tests -name \"*.spec.js\" -not -path \"./node_modules/*\")"
+    "tests": "NODE_ENV=test mocha './tests/**/*.spec.js'; istanbul cover _mocha $(find ./tests -name \"*.spec.js\" -not -path \"./node_modules/*\")",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
   },
   "dependencies": {
     "bluebird": "^3.5.0",
@@ -22,6 +23,7 @@
     "uuid": "^3.0.1"
   },
   "devDependencies": {
+    "coveralls": "^2.13.1",
     "chai": "^4.0.2",
     "mocha": "^3.4.2",
     "sinon": "^2.3.5",
