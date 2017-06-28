@@ -59,7 +59,9 @@ class UserService {
     create(data) {
         return new Promise((resolv, reject) => {
             this.bulkCreate([data])
-                .then(resolv)
+                .then(data => {
+                    resolv(data[0])
+                })
                 .catch(reject);
         });
 

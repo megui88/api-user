@@ -15,9 +15,8 @@ class StorageService {
 
 
     /**
-     * Close the db and its underlying connections
+     * Get the db
      * @method
-     * @param {boolean} force Force close, emitting no events
      * @return {Promise} returns Promise
      */
     getDB() {
