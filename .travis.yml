@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - "7"
+env:
+    - EMBER_VERSION=default
+install:
+    - cd src
+    - cp env.dist .env
+    - npm install
+script:
+    - cd src; npm run tests
