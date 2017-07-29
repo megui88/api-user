@@ -1,15 +1,11 @@
 const expect = require('chai').expect;
-
 const storage = require('developmentsoftware-api-commons').storage;
-
 const user = require('../../resources/UserService');
-
 const Promise = require('bluebird');
 
 describe('The user service happy pass', () => {
 
     it('try get all users ', function (done) {
-
         this.sandbox.stub(storage, 'getCollection').callsFake(findObject);
         const promise = user.all();
         promise
@@ -20,7 +16,6 @@ describe('The user service happy pass', () => {
     });
 
     it('try get one user ', function (done) {
-
         this.sandbox.stub(storage, 'getCollection').callsFake(updatedObject);
         const promise = user.get('one-id-fake');
         promise.then(data => {
@@ -30,11 +25,8 @@ describe('The user service happy pass', () => {
     });
 
     it('try get one user but not exist', function (done) {
-
         this.sandbox.stub(storage, 'getCollection').callsFake(notFoundObject);
-
         const promise = user.get('one-id-fake');
-
         promise
             .then(() => {
                 done();
@@ -47,7 +39,6 @@ describe('The user service happy pass', () => {
     });
 
     it('try create one user on password', function (done) {
-
         this.sandbox.stub(storage, 'getCollection').callsFake(insertObject);
         const promise = user.create(
             {
@@ -57,7 +48,6 @@ describe('The user service happy pass', () => {
                 connector: null,
                 password: 'some-hash'
             });
-
         promise
             .then(data => {
                 expect(data.id).to.be.a('string');
@@ -68,7 +58,6 @@ describe('The user service happy pass', () => {
     });
 
     it('try create one user on connector', function (done) {
-
         this.sandbox.stub(storage, 'getCollection').callsFake(insertObject);
         const promise = user.create(
             {
@@ -77,7 +66,6 @@ describe('The user service happy pass', () => {
                 email: 'other@gmail.lo',
                 connector: 'facebook'
             });
-
         promise
             .then(data => {
                 expect(data.id).to.be.a('string');
@@ -88,14 +76,11 @@ describe('The user service happy pass', () => {
     });
 
     it('try update first_name ', function (done) {
-
         this.sandbox.stub(storage, 'getCollection').callsFake(updatedObject);
         let updateObject = {
             first_name: 'Sr. Homero'
         };
-
         const promise = user.update('one-id-fake', updateObject);
-
         promise
             .then(data => {
                 expect(data.id).to.be.a('string');
@@ -107,14 +92,11 @@ describe('The user service happy pass', () => {
     });
 
     it('try update last_name ', function (done) {
-
         this.sandbox.stub(storage, 'getCollection').callsFake(updatedObject);
         let updateObject = {
             last_name: 'Simpson'
         };
-
         const promise = user.update('one-id-fake', updateObject);
-
         promise
             .then(data => {
                 expect(data.id).to.be.a('string');
@@ -131,10 +113,8 @@ describe('The user service fail', () => {
 
 
     it('try get all users ', function (done) {
-
         this.sandbox.stub(storage, 'getCollection').callsFake(failObject);
         const promise = user.all();
-
         promise
             .then(() => {
                 done();
@@ -147,10 +127,8 @@ describe('The user service fail', () => {
     });
 
     it('try get one user ', function (done) {
-
         this.sandbox.stub(storage, 'getCollection').callsFake(failObject);
         const promise = user.get('one-id-fake');
-
         promise
             .then(() => {
                 done();
@@ -163,9 +141,7 @@ describe('The user service fail', () => {
     });
 
     it('try create one user ', function (done) {
-
         this.sandbox.stub(storage, 'getCollection').callsFake(failObject);
-
         const promise = user.create(
             {
                 first_name: 'Homero',
@@ -174,7 +150,6 @@ describe('The user service fail', () => {
                 connector: null,
                 password: 'some-hash'
             });
-
         promise
             .then(() => {
                 done();
@@ -187,15 +162,11 @@ describe('The user service fail', () => {
     });
 
     it('try update one user ', function (done) {
-
         this.sandbox.stub(storage, 'getCollection').callsFake(failObject);
-
         let updateObject = {
             first_name: 'Sr. Homero'
         };
-
         const promise = user.update('one-id-fake', updateObject);
-
         promise
             .then(() => {
                 done();

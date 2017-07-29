@@ -1,52 +1,36 @@
 const client = require('mongodb');
-
 const expect = require('chai').expect;
-
 const storage = require('developmentsoftware-api-commons').storage;
-
 const user = require('../../resources/UserService');
-
 const Promise = require('bluebird');
 
 describe('The user service happy pass', () => {
 
     it('try get all users ', function (done) {
-
         this.sandbox.stub(client.MongoClient, 'connect').callsFake(successObject);
         storage.db = null;
         storage.getDB();
-
-        const promise = user.all();
-
-        promise.then(data => {
+        user.all().then(data => {
             expect(data.length).to.be.equal(2);
             done();
         });
     });
 
     it('try get one user ', function (done) {
-
         this.sandbox.stub(client.MongoClient, 'connect').callsFake(successObject);
         storage.db = null;
         storage.getDB();
-
-        const promise = user.get('one-id-fake');
-
-        promise.then(data => {
+        user.get('one-id-fake').then(data => {
             expect(data.id).to.be.equal('one-id-fake');
             done();
         });
     });
 
     it('try get one user but not exist', function (done) {
-
         this.sandbox.stub(client.MongoClient, 'connect').callsFake(notFoundObject);
         storage.db = null;
         storage.getDB();
-
-        const promise = user.get('one-id-fake');
-
-        promise
+        user.get('one-id-fake')
             .then(() => {
                 done();
                 throw new Error('Check this!');
@@ -58,11 +42,9 @@ describe('The user service happy pass', () => {
     });
 
     it('try create one user on password', function (done) {
-
         this.sandbox.stub(client.MongoClient, 'connect').callsFake(successObject);
         storage.db = null;
         storage.getDB();
-
         const promise = user.create(
             {
                 first_name: 'Homero',
@@ -71,7 +53,6 @@ describe('The user service happy pass', () => {
                 connector: null,
                 password: 'some-hash'
             });
-
         promise.then(data => {
             expect(data.id).to.be.a('string');
             expect(data.connector).to.be.a('null');
@@ -81,11 +62,9 @@ describe('The user service happy pass', () => {
     });
 
     it('try create one user on connector', function (done) {
-
         this.sandbox.stub(client.MongoClient, 'connect').callsFake(successObject);
         storage.db = null;
         storage.getDB();
-
         const promise = user.create(
             {
                 first_name: 'Other',
@@ -93,7 +72,6 @@ describe('The user service happy pass', () => {
                 email: 'other@gmail.lo',
                 connector: 'facebook'
             });
-
         promise.then(data => {
             expect(data.id).to.be.a('string');
             expect(data.password).to.be.a('null');
@@ -103,17 +81,13 @@ describe('The user service happy pass', () => {
     });
 
     it('try update first_name ', function (done) {
-
         this.sandbox.stub(client.MongoClient, 'connect').callsFake(successObject);
         storage.db = null;
         storage.getDB();
-
         let updateObject = {
             first_name: 'Sr. Homero'
         };
-
         const promise = user.update('one-id-fake', updateObject);
-
         promise.then(data => {
             expect(data.id).to.be.a('string');
             expect(data.connector).to.be.a('null');
@@ -124,17 +98,13 @@ describe('The user service happy pass', () => {
     });
 
     it('try update last_name ', function (done) {
-
         this.sandbox.stub(client.MongoClient, 'connect').callsFake(successObject);
         storage.db = null;
         storage.getDB();
-
         let updateObject = {
             last_name: 'Simpson'
         };
-
         const promise = user.update('one-id-fake', updateObject);
-
         promise.then(data => {
             expect(data.id).to.be.a('string');
             expect(data.connector).to.be.a('null');
@@ -149,16 +119,11 @@ describe('The user service happy pass', () => {
 
 describe('The user service fail', () => {
 
-
     it('try get all users ', function (done) {
-
         this.sandbox.stub(client.MongoClient, 'connect').callsFake(failObject);
         storage.db = null;
         storage.getDB();
-
-        const promise = user.all();
-
-        promise
+        user.all()
             .then(() => {
                 done();
                 throw new Error('Check this!');
@@ -170,14 +135,10 @@ describe('The user service fail', () => {
     });
 
     it('try get one user ', function (done) {
-
         this.sandbox.stub(client.MongoClient, 'connect').callsFake(failObject);
         storage.db = null;
         storage.getDB();
-
-        const promise = user.get('one-id-fake');
-
-        promise
+        user.get('one-id-fake')
             .then(() => {
                 done();
                 throw new Error('Check this!');
@@ -189,11 +150,9 @@ describe('The user service fail', () => {
     });
 
     it('try create one user ', function (done) {
-
         this.sandbox.stub(client.MongoClient, 'connect').callsFake(failObject);
         storage.db = null;
         storage.getDB();
-
         const promise = user.create(
             {
                 first_name: 'Homero',
@@ -202,7 +161,6 @@ describe('The user service fail', () => {
                 connector: null,
                 password: 'some-hash'
             });
-
         promise
             .then(() => {
                 done();
@@ -215,17 +173,13 @@ describe('The user service fail', () => {
     });
 
     it('try update one user ', function (done) {
-
         this.sandbox.stub(client.MongoClient, 'connect').callsFake(failObject);
         storage.db = null;
         storage.getDB();
-
         let updateObject = {
             first_name: 'Sr. Homero'
         };
-
         const promise = user.update('one-id-fake', updateObject);
-
         promise
             .then(() => {
                 done();

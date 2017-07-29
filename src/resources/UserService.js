@@ -1,5 +1,5 @@
-let Promise = require('bluebird');
-let storage = require('developmentsoftware-api-commons').storage;
+const Promise = require('bluebird');
+const storage = require('developmentsoftware-api-commons').storage;
 const uuidV4 = require('uuid/v4');
 
 class UserService {
@@ -41,7 +41,6 @@ class UserService {
     }
 
     find(query) {
-
         return new Promise((resolv, reject) => {
             this.storage.getCollection(this.COLLECTION)
                 .then(col => {
