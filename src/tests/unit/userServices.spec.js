@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
 
-const storage = require('../../resources/StorageService');
+const storage = require('developmentsoftware-api-commons').storage;
 
 const user = require('../../resources/UserService');
 
