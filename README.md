@@ -7,7 +7,7 @@ API User  [![Build Status](https://travis-ci.org/developmentsoftware/api-user.sv
 
 ## First steps
 ```
-git clone git@github.com:megui/api-user.git
+git clone git@github.com:developmentsoftware/api-user.git
 cd api-user
 cp src/.env.dist src/.env
 docker-compose build

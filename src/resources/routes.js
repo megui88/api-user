@@ -1,11 +1,11 @@
-let express = require('express');
-let user = require('./UserService');
-let router = express.Router();
+const express = require('express');
+const user = require('./UserService');
+const router = express.Router();
 
 /* GET users listing. */
 router.get('/', (req, res, next) => {
     user.all()
-        .then( data => {
+        .then(data => {
             res.json(data);
         })
         .catch(next);
@@ -14,7 +14,7 @@ router.get('/', (req, res, next) => {
 /* POST user create. */
 router.post('/', (req, res, next) => {
     user.create(req.body)
-        .then( data => {
+        .then(data => {
             res.status(201);
             res.json(data);
         })
@@ -24,7 +24,7 @@ router.post('/', (req, res, next) => {
 /* GET users listing. */
 router.get('/:id', (req, res, next) => {
     user.get(req.params.id)
-        .then( data => {
+        .then(data => {
             res.json(data);
         })
         .catch(next);
@@ -35,9 +35,8 @@ router.put('/:id', update);
 router.patch('/:id', update);
 
 function update(req, res, next) {
-
     user.update(req.params.id, req.body)
-        .then( data => {
+        .then(data => {
             res.json(data);
         })
         .catch(next);
