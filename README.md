@@ -1,4 +1,4 @@
-API User  [![Build Status](https://travis-ci.org/developmentsoftware/api-user.svg?branch=master)](https://travis-ci.org/megui88/api-user) [![Coverage Status](https://coveralls.io/repos/github/developmentsoftware/api-user/badge.svg?branch=master)](https://coveralls.io/github/developmentsoftware/api-user?branch=master)
+API User  [![Build Status](https://travis-ci.org/developmentsoftware/api-user.svg?branch=master)](https://travis-ci.org/developmentsoftware/api-user) [![Coverage Status](https://coveralls.io/repos/github/developmentsoftware/api-user/badge.svg?branch=master)](https://coveralls.io/github/developmentsoftware/api-user?branch=master)
 =======
 
 ### Please, it is necessary to have
