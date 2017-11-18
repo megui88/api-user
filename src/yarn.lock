@@ -356,9 +356,9 @@ destroy@~1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/destroy/-/destroy-1.0.4.tgz#978857442c44749e4206613e37946205826abd80"
 
-developmentsoftware-api-commons@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/developmentsoftware-api-commons/-/developmentsoftware-api-commons-0.1.0.tgz#d5e939623cceccb39f3723a1b7daba5aa3e09ac1"
+developmentsoftware-api-commons@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/developmentsoftware-api-commons/-/developmentsoftware-api-commons-0.1.4.tgz#20b96da1abcf0a2591d37604f2421bc3aaa8e032"
   dependencies:
     bluebird "^3.5.0"
     dotenv "^4.0.0"

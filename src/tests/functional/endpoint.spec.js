@@ -4,6 +4,26 @@ const expect = chai.expect;
 const chaiHttp = require('chai-http');
 const server = require('../../app');
 const storage = require('developmentsoftware-api-commons').storage;
+
+const elements = [
+    {
+        id: 'one-id-fake',
+        first_name: 'Homero',
+        last_name: 'Tompson',
+        email: 'homero@gmail.lo',
+        connector: null,
+        password: 'some-hash'
+    },
+    {
+        id: 'other-id-fake',
+        first_name: 'Marge',
+        last_name: 'Simpson',
+        email: 'marge@gmail.lo',
+        connector: 'facebook',
+        password: null
+    }
+];
+
 chai.use(chaiHttp);
 
 describe('/GET not found', () => {
@@ -22,6 +42,7 @@ describe('/GET not found', () => {
 describe('/GET users', () => {
     it('it should GET all the users', function (done) {
         this.sandbox.stub(client.MongoClient, 'connect').callsFake(successObject);
+        storage.db = null;
         chai.request(server)
             .get('/users')
             .end((err, res) => {
@@ -34,6 +55,7 @@ describe('/GET users', () => {
 
     it('it should GET one user', function (done) {
         this.sandbox.stub(client.MongoClient, 'connect').callsFake(successObject);
+        storage.db = null;
         chai.request(server)
             .get('/users/one-id-fake')
             .end((err, res) => {
@@ -46,6 +68,7 @@ describe('/GET users', () => {
 
     it('it should POST the user', function (done) {
         this.sandbox.stub(client.MongoClient, 'connect').callsFake(successObject);
+        storage.db = null;
         chai.request(server)
             .post('/users')
             .send({
@@ -66,6 +89,7 @@ describe('/GET users', () => {
 
     it('it should PATH the user', function (done) {
         this.sandbox.stub(client.MongoClient, 'connect').callsFake(successObject);
+        storage.db = null;
         chai.request(server)
             .patch('/users/one-id-fake')
             .send({
@@ -83,6 +107,7 @@ describe('/GET users', () => {
 
     it('it should PUT the user', function (done) {
         this.sandbox.stub(client.MongoClient, 'connect').callsFake(successObject);
+        storage.db = null;
         chai.request(server)
             .put('/users/one-id-fake')
             .send({
@@ -102,8 +127,8 @@ describe('/GET users', () => {
 
 describe('/GET users fail', () => {
     it('it should GET all the users', function (done) {
-        storage.db = null;
         this.sandbox.stub(client.MongoClient, 'connect').callsFake(failObject);
+        storage.db = null;
         chai.request(server)
             .get('/users')
             .end((err, res) => {
@@ -113,9 +138,9 @@ describe('/GET users fail', () => {
             });
     });
     it('it should GET force prod env', function (done) {
-        storage.db = null;
         server.set('env', 'prod');
         this.sandbox.stub(client.MongoClient, 'connect').callsFake(failObject);
+        storage.db = null;
         chai.request(server)
             .get('/users')
             .end((err, res) => {
@@ -153,24 +178,7 @@ function successObject() {
                                 return {
                                     toArray: () => {
                                         return new Promise((resolv) => {
-                                            resolv([
-                                                {
-                                                    id: 'one-id-fake',
-                                                    first_name: 'Homero',
-                                                    last_name: 'Tompson',
-                                                    email: 'homero@gmail.lo',
-                                                    connector: null,
-                                                    password: 'some-hash'
-                                                },
-                                                {
-                                                    id: 'other-id-fake',
-                                                    first_name: 'Marge',
-                                                    last_name: 'Simpson',
-                                                    email: 'marge@gmail.lo',
-                                                    connector: 'facebook',
-                                                    password: null
-                                                }
-                                            ]);
+                                            resolv(elements);
                                         });
                                     }
                                 }

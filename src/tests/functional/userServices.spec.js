@@ -3,6 +3,24 @@ const expect = require('chai').expect;
 const storage = require('developmentsoftware-api-commons').storage;
 const user = require('../../resources/UserService');
 const Promise = require('bluebird');
+const elements = [
+    {
+        id: 'one-id-fake',
+        first_name: 'Homero',
+        last_name: 'Tompson',
+        email: 'homero@gmail.lo',
+        connector: null,
+        password: 'some-hash'
+    },
+    {
+        id: 'other-id-fake',
+        first_name: 'Marge',
+        last_name: 'Simpson',
+        email: 'marge@gmail.lo',
+        connector: 'facebook',
+        password: null
+    }
+];
 
 describe('The user service happy pass', () => {
 
@@ -114,8 +132,7 @@ describe('The user service happy pass', () => {
         });
     });
 
-})
-;
+});
 
 describe('The user service fail', () => {
 
@@ -193,9 +210,18 @@ describe('The user service fail', () => {
 
 });
 
-// Mock Objects
-function successObject() {
+// MOCK
 
+function promiseReject() {
+    return new Promise((resolv, reject) => {
+        reject({
+            code: 500,
+            message: 'Some problem!'
+        });
+    });
+}
+
+function successObject() {
     return new Promise((resolv) => {
         resolv({
                 collection: () => {
@@ -219,24 +245,7 @@ function successObject() {
                                 return {
                                     toArray: () => {
                                         return new Promise((resolv) => {
-                                            resolv([
-                                                {
-                                                    id: 'one-id-fake',
-                                                    first_name: 'Homero',
-                                                    last_name: 'Tompson',
-                                                    email: 'homero@gmail.lo',
-                                                    connector: null,
-                                                    password: 'some-hash'
-                                                },
-                                                {
-                                                    id: 'other-id-fake',
-                                                    first_name: 'Marge',
-                                                    last_name: 'Simpson',
-                                                    email: 'marge@gmail.lo',
-                                                    connector: 'facebook',
-                                                    password: null
-                                                }
-                                            ]);
+                                            resolv(elements);
                                         });
                                     }
                                 }
@@ -250,7 +259,6 @@ function successObject() {
 }
 
 function notFoundObject() {
-
     return new Promise((resolv) => {
         resolv({
                 collection: () => {
@@ -274,7 +282,6 @@ function notFoundObject() {
 }
 
 function failObject() {
-
     return new Promise((resolv) => {
         resolv({
                 collection: () => {
@@ -292,15 +299,5 @@ function failObject() {
                 }
             }
         );
-    });
-}
-
-function promiseReject() {
-
-    return new Promise((resolv, reject) => {
-        reject({
-            code: 500,
-            message: 'Some problem!'
-        });
     });
 }
