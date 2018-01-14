@@ -1,5 +1,7 @@
-API User  [![Build Status](https://travis-ci.org/developmentsoftware/api-user.svg?branch=master)](https://travis-ci.org/developmentsoftware/api-user) [![Coverage Status](https://coveralls.io/repos/github/developmentsoftware/api-user/badge.svg?branch=master)](https://coveralls.io/github/developmentsoftware/api-user?branch=master)
-=======
+#API User  
+[![Test Status][travis-image]][travis-url]
+[![Coverage Status][coveralls-image]][coveralls-url]
+
 
 ### Please, it is necessary to have
 * docker:  [Ubuntu](https://docs.docker.com/engine/installation/linux/ubuntu/) or [Mac](https://docs.docker.com/docker-for-mac/install/)
@@ -19,3 +21,8 @@ Go to: [localhost](http://localhost:3000/)
 ## Usage
 
 Just run `cd api-user; docker-compose up -d`, then:
+
+[travis-image]: https://img.shields.io/travis/developmentsoftware/api-user/master.svg
+[travis-url]: https://travis-ci.org/developmentsoftware/api-user
+[coveralls-image]: https://coveralls.io/repos/github/developmentsoftware/api-user/badge.svg
+[coveralls-url]: https://coveralls.io/github/developmentsoftware/api-user

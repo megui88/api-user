@@ -13,10 +13,9 @@
     "chai-http": "^3.0.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
-    "developmentsoftware-api-commons": "^0.1.4",
+    "developmentsoftware-api-commons": "^0.1.5",
     "dotenv": "^4.0.0",
     "express": "~4.15.2",
-    "istanbul": "^0.4.5",
     "mongodb": "^2.2.28",
     "morgan": "~1.8.1",
     "pug": "~2.0.0-beta11",
@@ -26,6 +25,7 @@
   "devDependencies": {
     "chai": "^4.0.2",
     "coveralls": "^2.13.1",
+    "istanbul": "^0.4.5",
     "mocha": "^3.4.2",
     "sinon": "^2.3.5",
     "sinon-chai": "^2.11.0"

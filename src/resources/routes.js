@@ -21,7 +21,7 @@ router.post('/', (req, res, next) => {
         .catch(next);
 });
 
-/* GET users listing. */
+/* GET user details. */
 router.get('/:id', (req, res, next) => {
     user.get(req.params.id)
         .then(data => {
